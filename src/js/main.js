@@ -1,6 +1,12 @@
-import refs from './refs.js';
+// import refs from './refs.js';
 import NewApiService from './apiService';
 import temp from '../temp/photo-card.hbs';
+
+const refs = {
+  searchForm: document.querySelector('#search-form'),
+  gallery: document.querySelector('gallery'),
+  loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
+};
 
 const API_SERVICE = new NewApiService();
 
