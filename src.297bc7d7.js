@@ -1,7 +1,7 @@
 parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"clu1":[function(require,module,exports) {
 
 },{}],"VyiV":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e={refs:r};exports.default=e;const r={searchForm:document.querySelector("#search-form"),gallery:document.querySelector("gallery"),loadMoreBtn:document.querySelector('button[data-action="load-more"]')};
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e={searchForm:document.querySelector("#search-form"),gallery:document.querySelector("gallery"),loadMoreBtn:document.querySelector('button[data-action="load-more"]')};var r={refs:e};exports.default=r;
 },{}],"eQwa":[function(require,module,exports) {
 "use strict";function e(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;class t{constructor(){e(this,"fethcArticles",async()=>{const e=`https://pixabay.com/api//?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=23071617-4384eb8116da3def56182313f`,t=await e.json();return this.incrementPage(),t.hits}),this.page=1,this.searchQuery=""}get query(){return this.searchQuery}set query(e){this.searchQuery=e}incrementPage(){this.page+=1}resetPage(){this.page=1}}exports.default=t;
 },{}],"pAws":[function(require,module,exports) {
@@ -15,4 +15,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./refs.js":"VyiV","./apiService":"eQwa","../temp/photo-card.hbs":"mX2E"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/main.js");
 },{"./sass/main.scss":"clu1","./js/main.js":"d6sW"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-13-image-finder/src.fe546431.js.map
+//# sourceMappingURL=/goit-js-hw-13-image-finder/src.297bc7d7.js.map
