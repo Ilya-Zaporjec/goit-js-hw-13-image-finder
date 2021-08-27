@@ -32,6 +32,12 @@ function loadMore() {
   API_SERVICE.fethcArticles().then(hits => {
     makeTemplate(hits);
 
+    const element = document.getElementById('.gallery');
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+
     window.scrollTo(0, 1000);
     window.scrollTo({
       top: 1000,
@@ -39,10 +45,9 @@ function loadMore() {
     });
   });
 }
-
 function makeTemplate(e) {
-  refs.gallery.insertAdjacentHTML('beforeend', e);
-  return temp(e);
+  const markUp = temp(e);
+  refs.gallery.insertAdjacentHTML('beforeend', markUp);
 }
 function clearList() {
   refs.gallery.innerHTML = null;

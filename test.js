@@ -34,3 +34,7 @@
 //     this.page = 1;
 //   }
 // }
+// function makeTemplate(e) {
+//   refs.gallery.insertAdjacentHTML('beforeend', e);
+//   return temp(e);
+// }
