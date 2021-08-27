@@ -23,7 +23,6 @@ function search(e) {
   API_SERVICE.query = input;
   API_SERVICE.resetPage();
   API_SERVICE.fethcArticles().then(hits => {
-    this.incrementPage();
     makeTemplate(hits);
   });
   input = '';
