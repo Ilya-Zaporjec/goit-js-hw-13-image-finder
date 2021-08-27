@@ -1,11 +1,13 @@
 // import refs from './refs.js';
 import NewApiService from './apiService';
 import temp from '../temp/photo-card.hbs';
+import { alert, defaultModules } from '@pnotify/core';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
+  input: document.querySelector('.search-input'),
 };
 
 const API_SERVICE = new NewApiService();
@@ -18,22 +20,27 @@ function search(e) {
 
   let input = e.currentTarget.elements.query.value;
 
-  clearList();
-
   API_SERVICE.query = input;
   API_SERVICE.resetPage();
+  API_SERVICE.fethcArticles().then(data => {
+    if (data.length < 1) {
+      noticeAlert();
+    }
+  });
   API_SERVICE.fethcArticles().then(hits => {
     makeTemplate(hits);
   });
+
   input = '';
+  refs.gallery.innerHTML = '';
+  clearList();
 }
 
 function loadMore() {
   API_SERVICE.fethcArticles().then(hits => {
     makeTemplate(hits);
 
-    const element = document.getElementById('.gallery');
-    element.scrollIntoView({
+    gallery.scrollIntoView({
       behavior: 'smooth',
       block: 'end',
     });
@@ -50,5 +57,15 @@ function makeTemplate(e) {
   refs.gallery.insertAdjacentHTML('beforeend', markUp);
 }
 function clearList() {
-  refs.gallery.innerHTML = null;
+  refs.input.value = null;
+}
+function noticeAlert() {
+  alert({
+    text: 'Oops, search returned no results. Please try a different value.',
+    type: 'notice',
+    shadow: true,
+    delay: 2000,
+    hide: true,
+  });
+  clearList();
 }
