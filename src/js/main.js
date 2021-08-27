@@ -4,7 +4,7 @@ import temp from '../temp/photo-card.hbs';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
-  gallery: document.querySelector('gallery'),
+  gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
 };
 
@@ -16,17 +16,17 @@ refs.loadMoreBtn.addEventListener('click', loadMore);
 function search(e) {
   e.preventDefault();
 
-  const input = e.currentTarget.elements.query.value;
+  let input = e.currentTarget.elements.query.value;
 
   clearList();
 
+  API_SERVICE.query = input;
   API_SERVICE.resetPage();
-  API_SERVICE.searchQuery = input.value;
-
   API_SERVICE.fethcArticles().then(hits => {
+    this.incrementPage();
     makeTemplate(hits);
   });
-  input.value = '';
+  input = '';
 }
 
 function loadMore() {
@@ -41,10 +41,10 @@ function loadMore() {
   });
 }
 
-function makeTemplate(items) {
-  refs.gallery.insertAdjacentHTML('beforeend', items);
-  return temp(items);
+function makeTemplate(e) {
+  refs.gallery.insertAdjacentHTML('beforeend', e);
+  return temp(e);
 }
 function clearList() {
-  refs.gallery.innerHTML = '';
+  refs.gallery.innerHTML = null;
 }
